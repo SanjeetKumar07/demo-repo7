@@ -49,7 +49,7 @@ When different parts of a system need to work independently or handle varying lo
 
 ## References
 
-* [Messaging Queue Basics - IBM Cloud](https://www.ibm.com/cloud/learn/messaging-queues)
-* [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
-* [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
+* [Messaging Queue Basics - Geeks for geeks]([https://www.ibm.com/cloud/learn/messaging-queues](https://www.geeksforgeeks.org/introduction-to-messaging-queues-in-spring-boot-microservices/))
+* [Levio ]([https://kafka.apache.org/documentation/](https://levioconsulting.com/insights/a-simple-guide-to-using-ibm-mq-with-java-messaging-service/))
+
 
