@@ -28,15 +28,6 @@ Instead of performing all tasks immediately, the system sends messages to a queu
 
 
 
-### How to Use Messaging Queues  
-Send messages to a queue and let services consume them asynchronously when ready.
-
-### Why Use Messaging Queues  
-To make systems reliable, scalable, and loosely coupled.
-
-### When to Use Messaging Queues  
-When different parts of a system need to work independently or handle varying loads without blocking each other.
-
 
 ## Key Features of Messaging Queues
 
@@ -44,38 +35,13 @@ When different parts of a system need to work independently or handle varying lo
 * **Multiple Consumers:** More than one consumer can read from the same queue, sharing the workload.  
 * This makes the system able to handle more users or tasks easily.
 
-## Simple Java Example Using Apache Kafka
+## Summary of the paper 
 
-The following Java program sends a message `"Order placed successfully"` to a Kafka topic called `"order-queue"`. This message can later be processed by another service.
+* **How to Use Messaging Queues**  
+Send messages to a queue and let services consume them asynchronously when ready.
 
-```java
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.serialization.StringSerializer;
+* **Why Use Messaging Queues**  
+To make systems reliable, scalable, and loosely coupled.
 
-import java.util.Properties;
-
-public class SimpleKafkaProducer {
-
-    public static void main(String[] args) {
-        Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-
-        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
-
-        String topic = "order-queue";
-
-        String message = "Order placed successfully";
-
-        ProducerRecord<String, String> record = new ProducerRecord<>(topic, message);
-
-        producer.send(record);
-
-        System.out.println("Message sent to Kafka topic: " + topic);
-
-        producer.close();
-    }
-}
+* **When to Use Messaging Queues**  
+When different parts of a system need to work independently or handle varying loads without blocking each other.
