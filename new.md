@@ -49,7 +49,8 @@ When different parts of a system need to work independently or handle varying lo
 
 ## References
 
-* [Messaging Queue Basics - Geeks for geeks]([https://www.ibm.com/cloud/learn/messaging-queues](https://www.geeksforgeeks.org/introduction-to-messaging-queues-in-spring-boot-microservices/))
-* [Levio ]([https://kafka.apache.org/documentation/](https://levioconsulting.com/insights/a-simple-guide-to-using-ibm-mq-with-java-messaging-service/))
+* [Messaging Queue Basics - GeeksforGeeks](https://www.geeksforgeeks.org/introduction-to-messaging-queues-in-spring-boot-microservices/)
+* [A Simple Guide to Using IBM MQ with Java Messaging Service - Levio](https://levioconsulting.com/insights/a-simple-guide-to-using-ibm-mq-with-java-messaging-service/)
+
 
 
