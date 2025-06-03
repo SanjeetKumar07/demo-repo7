@@ -26,21 +26,17 @@ Instead of performing all tasks immediately, the system sends messages to a queu
 * **Scalability:** The system can handle many orders by distributing tasks to multiple services that read from the same queue, improving performance.  
 * **Flexibility:** Services don’t need to be connected or work at the same time.
 
-## Popular Messaging Queue Tools
 
-Some well-known messaging queue tools are:
 
-* RabbitMQ  
-* Apache Kafka  
-* Amazon Simple Queue Service (SQS)  
+### How to Use Messaging Queues  
+Send messages to a queue and let services consume them asynchronously when ready.
 
-These tools offer features like:
+### Why Use Messaging Queues  
+To make systems reliable, scalable, and loosely coupled.
 
-* Message persistence (saving messages until delivered)  
-* Message ordering  
-* Delivery confirmation  
+### When to Use Messaging Queues  
+When different parts of a system need to work independently or handle varying loads without blocking each other.
 
-These features help make communication safe and efficient.
 
 ## Key Features of Messaging Queues
 
