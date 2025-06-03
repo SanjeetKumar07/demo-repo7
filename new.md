@@ -10,35 +10,38 @@ Messaging queues make the system more reliable. If the email service crashes, me
 
 Popular messaging queue tools include RabbitMQ, Apache Kafka, and Amazon Simple Queue Service (SQS). Each tool offers features like message persistence (saving messages until delivered), message ordering, and delivery confirmation to make sure the communication is safe and efficient.
 
-Here is a simple Java example using RabbitMQ. It sends a message "Hello, World!" to a queue called "hello". This message can then be processed later by another service.
+Messaging queues support important features like message durability, which means messages are saved safely until they are delivered, even if the system crashes. They also allow multiple consumers to read from the same queue to share the workload. This makes the system scalable and able to handle more users or tasks easily.
+
+Here is a simple Java example using Apache Kafka. It sends a message "Order placed successfully" to a Kafka topic called "order-queue". This message can then be processed later by another service.
 
 ```java
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
 
-public class Send {
+import java.util.Properties;
 
-    private final static String QUEUE_NAME = "hello";
+public class SimpleKafkaProducer {
 
-    public static void main(String[] argv) throws Exception {
-        // Create a connection factory and set the RabbitMQ server location
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        // Establish a connection to the server and open a channel
-        try (Connection connection = factory.newConnection();
-             Channel channel = connection.createChannel()) {
+        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
-            // Declare a queue named "hello"
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        String topic = "order-queue";
 
-            // The message we want to send
-            String message = "Hello, World!";
+        String message = "Order placed successfully";
 
-            // Publish the message to the queue
-            channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
-            System.out.println(" [x] Sent '" + message + "'");
-        }
+        ProducerRecord<String, String> record = new ProducerRecord<>(topic, message);
+
+        producer.send(record);
+
+        System.out.println("Message sent to Kafka topic: " + topic);
+
+        producer.close();
     }
 }
