@@ -45,3 +45,11 @@ To make systems reliable, scalable, and loosely coupled.
 
 * **When to Use Messaging Queues**  
 When different parts of a system need to work independently or handle varying loads without blocking each other.
+
+
+## References
+
+* [Messaging Queue Basics - IBM Cloud](https://www.ibm.com/cloud/learn/messaging-queues)
+* [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+* [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
+
